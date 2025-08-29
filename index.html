@@ -391,20 +391,69 @@
           background: #6b4e71;
           color: white;
       }
+
+      /* Hamburger styles */
+      .hamburger {
+          display: none;
+          flex-direction: column;
+          cursor: pointer;
+          gap: 5px;
+      }
+
+      .hamburger div {
+          width: 25px;
+          height: 3px;
+          background-color: #6b4e71;
+          border-radius: 2px;
+      }
+
+      /* Mobile responsiveness */
+      @media (max-width: 768px) {
+          .nav-links {
+              flex-direction: column;
+              display: none; /* hide links initially */
+              gap: 16px;
+              margin-top: 12px;
+              width: 100%;
+          }
+
+          .nav-links.show {
+              display: flex;
+          }
+
+          .hamburger {
+              display: flex;
+          }
+
+          .cta-nav {
+              margin-top: 12px;
+              text-align: center;
+          }
+      }
+
   </style>
 </head>
 <body>
 <header class="header">
   <div class="container nav">
     <div class="logo">RetainHer</div>
+
+    <!-- Hamburger button for mobile -->
+    <div class="hamburger" onclick="toggleMenu()">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+
     <ul class="nav-links">
       <li><a href="#features">Features</a></li>
       <li><a href="#app">App</a></li>
       <li><a href="#contact">Contact</a></li>
+      <li><a href="https://forms.gle/hvBx3LcsPXeF4f1u6" class="cta-nav">Join the Beta</a></li>
     </ul>
-    <a href="https://forms.gle/hvBx3LcsPXeF4f1u6" class="cta-nav">Join the Beta</a>
   </div>
 </header>
+
 
 <section class="hero">
   <div class="container">
@@ -627,6 +676,11 @@
             });
         });
     });
+
+    function toggleMenu() {
+        const navLinks = document.querySelector('.nav-links');
+        navLinks.classList.toggle('show');
+    }
 </script>
 </body>
 </html>
